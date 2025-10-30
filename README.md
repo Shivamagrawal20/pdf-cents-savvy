@@ -1,73 +1,27 @@
-# Welcome to your Lovable project
+# MoneySaver - Static HTML/CSS/JS
 
-## Project info
+This is a lightweight, static version of MoneySaver. No build tools, frameworks, or Node are required.
 
-**URL**: https://lovable.dev/projects/7232488a-18ee-42c5-8c52-72d8d91d4799
+## Run locally
 
-## How can I edit this code?
+- Open `index.html` in your browser (double-click it or drag into a tab).
 
-There are several ways of editing your application.
+## Features
 
-**Use Lovable**
+- Set monthly budget
+- Add expenses (platform, category, amount, date)
+- Auto-categorize platform names (e.g., Uber → Transport, Amazon → Shopping)
+- View totals, remaining budget, progress bar, category breakdown
+- Delete expenses
+- Data persists in `localStorage`
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/7232488a-18ee-42c5-8c52-72d8d91d4799) and start prompting.
+## Files
 
-Changes made via Lovable will be committed automatically to this repo.
+- `index.html` — app markup
+- `styles.css` — styles (dark theme)
+- `app.js` — app logic and `localStorage` persistence
 
-**Use your preferred IDE**
+## Notes
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/7232488a-18ee-42c5-8c52-72d8d91d4799) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+- All React/Vite/TypeScript and related configs were removed.
+- You can deploy by serving these three files from any static host.
