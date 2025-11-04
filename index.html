@@ -5,103 +5,431 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MoneySaver - Smart Personal Expense Manager</title>
     <meta name="description" content="Track and manage your personal expenses with MoneySaver. Set budgets, categorize spending, and visualize your financial habits." />
-    <meta name="author" content="MoneySaver" />
-
-    <meta property="og:title" content="MoneySaver - Smart Personal Expense Manager" />
-    <meta property="og:description" content="Track and manage your personal expenses with MoneySaver. Set budgets, categorize spending, and visualize your financial habits." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <link rel="stylesheet" href="./styles.css" />
   </head>
 
   <body>
-    <header class="container">
-      <div class="brand">
-        <h1>MoneySaver</h1>
-        <p>Smart Personal Expense Manager</p>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-brand">
+          <h1>💰 MoneySaver</h1>
+        </div>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="#/" class="nav-link active" data-page="home">Home</a></li>
+          <li><a href="#/dashboard" class="nav-link" data-page="dashboard">Dashboard</a></li>
+          <li><a href="#/about" class="nav-link" data-page="about">About</a></li>
+        </ul>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
-      <button id="set-limit-btn" class="btn">Set Monthly Limit</button>
-    </header>
+    </nav>
 
-    <main class="container">
-      <section class="stats-grid">
-        <div class="card">
-          <div class="card-title">Monthly Budget</div>
-          <div class="card-value" id="stat-budget">₹0.00</div>
-        </div>
-        <div class="card">
-          <div class="card-title">Total Spent</div>
-          <div class="card-value" id="stat-spent">₹0.00</div>
-          <div class="card-sub" id="stat-percent">0% of budget</div>
-        </div>
-        <div class="card">
-          <div class="card-title">Remaining</div>
-          <div class="card-value" id="stat-remaining">₹0.00</div>
-        </div>
-        <div class="card">
-          <div class="card-title">Transactions</div>
-          <div class="card-value" id="stat-transactions">0</div>
-          <div class="card-sub">this month</div>
-        </div>
-      </section>
-
-      <section class="grid">
-        <div class="left">
-          <form id="expense-form" class="card form">
-            <div class="form-row">
-              <label for="platform">Platform</label>
-              <input id="platform" name="platform" type="text" placeholder="e.g., Amazon, Uber" required />
+    <!-- Main Content Area -->
+    <main id="main-content">
+      <!-- Home Page -->
+      <div id="page-home" class="page active">
+        <section class="hero">
+          <div class="hero-background">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+          </div>
+          <div class="hero-content">
+            <div class="hero-badge">
+              <span>✨ Smart Expense Management</span>
             </div>
-            <div class="form-row">
-              <label for="category">Category</label>
-              <select id="category" name="category"></select>
+            <h1 class="hero-title">
+              <span class="title-line">Take Control of</span>
+              <span class="title-line gradient-text">Your Finances</span>
+            </h1>
+            <p class="hero-subtitle">Transform how you track expenses. Smart categorization, real-time insights, and beautiful visualizations help you stay within budget effortlessly.</p>
+            <div class="hero-buttons">
+              <a href="#/dashboard" class="btn btn-primary btn-large">
+                <span>Get Started Free</span>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <a href="#/about" class="btn btn-secondary btn-large">Learn More</a>
             </div>
-            <div class="form-row">
-              <label for="amount">Amount (₹)</label>
-              <input id="amount" name="amount" type="number" step="0.01" min="0" required />
-            </div>
-            <div class="form-row">
-              <label for="date">Date</label>
-              <input id="date" name="date" type="date" required />
-            </div>
-            <button class="btn" type="submit">Add Expense</button>
-          </form>
-        </div>
-
-        <div class="right">
-          <div class="card">
-            <div class="card-title">Budget Progress</div>
-            <div class="progress">
-              <div class="progress-bar" id="progress-bar" style="width:0%"></div>
+            <div class="hero-stats">
+              <div class="hero-stat-item">
+                <div class="stat-number" data-target="1000">0</div>
+                <div class="stat-label">Active Users</div>
+              </div>
+              <div class="hero-stat-item">
+                <div class="stat-number" data-target="50000">0</div>
+                <div class="stat-label">Expenses Tracked</div>
+              </div>
+              <div class="hero-stat-item">
+                <div class="stat-number" data-target="99">0</div>
+                <div class="stat-label">% Satisfaction</div>
+              </div>
             </div>
           </div>
+        </section>
 
-          <div class="card">
-            <div class="card-title">By Category</div>
-            <ul id="category-list" class="list"></ul>
+        <section class="features">
+          <div class="container">
+            <div class="section-header">
+              <span class="section-badge">Features</span>
+              <h2 class="section-title">Everything You Need to Manage Expenses</h2>
+              <p class="section-subtitle">Powerful tools designed to make expense tracking simple, smart, and enjoyable</p>
+            </div>
+            <div class="features-grid">
+              <div class="feature-card" data-aos="fade-up">
+                <div class="feature-icon-wrapper">
+                  <div class="feature-icon">📊</div>
+                  <div class="feature-icon-bg"></div>
+                </div>
+                <h3>Smart Tracking</h3>
+                <p>Automatically categorize expenses based on platform names. Just enter where you shopped, and we'll handle the rest.</p>
+                <div class="feature-link">Learn more →</div>
+              </div>
+              <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon-wrapper">
+                  <div class="feature-icon">💰</div>
+                  <div class="feature-icon-bg"></div>
+                </div>
+                <h3>Budget Management</h3>
+                <p>Set monthly limits and track your spending in real-time. Visual progress bars keep you informed at a glance.</p>
+                <div class="feature-link">Learn more →</div>
+              </div>
+              <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon-wrapper">
+                  <div class="feature-icon">📈</div>
+                  <div class="feature-icon-bg"></div>
+                </div>
+                <h3>Visual Insights</h3>
+                <p>Beautiful charts and category breakdowns reveal your spending patterns. Make informed decisions with data-driven insights.</p>
+                <div class="feature-link">Learn more →</div>
+              </div>
+              <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon-wrapper">
+                  <div class="feature-icon">🎯</div>
+                  <div class="feature-icon-bg"></div>
+                </div>
+                <h3>Quick Entry</h3>
+                <p>Add expenses in seconds with our streamlined interface. Mobile-friendly design works seamlessly on any device.</p>
+                <div class="feature-link">Learn more →</div>
+              </div>
+              <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="feature-icon-wrapper">
+                  <div class="feature-icon">🔒</div>
+                  <div class="feature-icon-bg"></div>
+                </div>
+                <h3>Secure & Private</h3>
+                <p>Your financial data is stored securely in your own MySQL database. Complete privacy and full control.</p>
+                <div class="feature-link">Learn more →</div>
+              </div>
+              <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="feature-icon-wrapper">
+                  <div class="feature-icon">⚡</div>
+                  <div class="feature-icon-bg"></div>
+                </div>
+                <h3>Real-time Updates</h3>
+                <p>See your statistics update instantly as you add expenses. No waiting, no delays—just instant insights.</p>
+                <div class="feature-link">Learn more →</div>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="card">
-        <div class="card-title">Expenses</div>
-        <div class="table">
-          <div class="table-header">
-            <div>Platform</div>
-            <div>Category</div>
-            <div>Amount</div>
-            <div>Date</div>
-            <div></div>
+        <section class="how-it-works">
+          <div class="container">
+            <div class="section-header">
+              <span class="section-badge">How It Works</span>
+              <h2 class="section-title">Get Started in 3 Simple Steps</h2>
+            </div>
+            <div class="steps-container">
+              <div class="step-item">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                  <h3>Set Your Budget</h3>
+                  <p>Define your monthly spending limit with just one click. Start with any amount that works for you.</p>
+                </div>
+                <div class="step-icon">🎯</div>
+              </div>
+              <div class="step-connector"></div>
+              <div class="step-item">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                  <h3>Add Expenses</h3>
+                  <p>Record your expenses as you spend. Our smart system automatically categorizes them for you.</p>
+                </div>
+                <div class="step-icon">📝</div>
+              </div>
+              <div class="step-connector"></div>
+              <div class="step-item">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                  <h3>Track & Analyze</h3>
+                  <p>Monitor your spending in real-time and see beautiful visualizations of your financial habits.</p>
+                </div>
+                <div class="step-icon">📊</div>
+              </div>
+            </div>
           </div>
-          <div id="expense-list" class="table-body"></div>
+        </section>
+
+        <section class="stats-preview">
+          <div class="container">
+            <div class="stats-preview-wrapper">
+              <div class="stats-preview-header">
+                <h2 class="section-title">Your Financial Dashboard</h2>
+                <p>Real-time insights into your spending patterns</p>
+              </div>
+              <div class="stats-preview-grid">
+                <div class="stat-preview-card pulse">
+                  <div class="stat-preview-icon">💰</div>
+                  <div class="stat-preview-label">Total Expenses</div>
+                  <div class="stat-preview-value" id="preview-total">₹0</div>
+                  <div class="stat-preview-trend">All time</div>
+                </div>
+                <div class="stat-preview-card pulse">
+                  <div class="stat-preview-icon">📝</div>
+                  <div class="stat-preview-label">Transactions</div>
+                  <div class="stat-preview-value" id="preview-transactions">0</div>
+                  <div class="stat-preview-trend">Total count</div>
+                </div>
+                <div class="stat-preview-card pulse">
+                  <div class="stat-preview-icon">📂</div>
+                  <div class="stat-preview-label">Categories</div>
+                  <div class="stat-preview-value" id="preview-categories">9</div>
+                  <div class="stat-preview-trend">Available</div>
+                </div>
+              </div>
+              <div class="cta-section">
+                <a href="#/dashboard" class="btn btn-primary btn-large">View Full Dashboard</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="testimonial-section">
+          <div class="container">
+            <div class="section-header">
+              <span class="section-badge">Testimonials</span>
+              <h2 class="section-title">Loved by Users</h2>
+            </div>
+            <div class="testimonials-grid">
+              <div class="testimonial-card">
+                <div class="testimonial-quote">"</div>
+                <p class="testimonial-text">MoneySaver has completely transformed how I track my expenses. The automatic categorization is a game-changer!</p>
+                <div class="testimonial-author">
+                  <div class="author-avatar">👤</div>
+                  <div class="author-info">
+                    <div class="author-name">Sarah Johnson</div>
+                    <div class="author-role">Freelance Designer</div>
+                  </div>
+                </div>
+              </div>
+              <div class="testimonial-card">
+                <div class="testimonial-quote">"</div>
+                <p class="testimonial-text">Finally, a budgeting tool that's actually easy to use. The visual insights help me understand my spending habits better.</p>
+                <div class="testimonial-author">
+                  <div class="author-avatar">👤</div>
+                  <div class="author-info">
+                    <div class="author-name">Michael Chen</div>
+                    <div class="author-role">Software Engineer</div>
+                  </div>
+                </div>
+              </div>
+              <div class="testimonial-card">
+                <div class="testimonial-quote">"</div>
+                <p class="testimonial-text">I love how I can see my budget progress in real-time. It keeps me motivated to stay within my limits!</p>
+                <div class="testimonial-author">
+                  <div class="author-avatar">👤</div>
+                  <div class="author-info">
+                    <div class="author-name">Emily Rodriguez</div>
+                    <div class="author-role">Marketing Manager</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="cta-section-final">
+          <div class="container">
+            <div class="cta-content">
+              <h2>Ready to Transform Your Finances?</h2>
+              <p>Join thousands of users who are taking control of their spending</p>
+              <div class="cta-buttons">
+                <a href="#/dashboard" class="btn btn-primary btn-large">Start Tracking Now</a>
+                <a href="#/about" class="btn btn-secondary btn-large">Learn More</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Dashboard Page -->
+      <div id="page-dashboard" class="page">
+        <div class="container">
+          <div class="dashboard-header">
+            <h1>Dashboard</h1>
+            <button id="set-limit-btn" class="btn btn-primary">Set Monthly Limit</button>
+          </div>
+
+          <section class="stats-grid">
+            <div class="card">
+              <div class="card-title">Monthly Budget</div>
+              <div class="card-value" id="stat-budget">₹0.00</div>
+            </div>
+            <div class="card">
+              <div class="card-title">Total Spent</div>
+              <div class="card-value" id="stat-spent">₹0.00</div>
+              <div class="card-sub" id="stat-percent">0% of budget</div>
+            </div>
+            <div class="card">
+              <div class="card-title">Remaining</div>
+              <div class="card-value" id="stat-remaining">₹0.00</div>
+            </div>
+            <div class="card">
+              <div class="card-title">Transactions</div>
+              <div class="card-value" id="stat-transactions">0</div>
+              <div class="card-sub">this month</div>
+            </div>
+          </section>
+
+          <section class="grid">
+            <div class="left">
+              <form id="expense-form" class="card form">
+                <h3 class="form-title">Add New Expense</h3>
+                <div class="form-row">
+                  <label for="platform">Platform</label>
+                  <input id="platform" name="platform" type="text" placeholder="e.g., Amazon, Uber" required />
+                </div>
+                <div class="form-row">
+                  <label for="category">Category</label>
+                  <select id="category" name="category"></select>
+                </div>
+                <div class="form-row">
+                  <label for="amount">Amount (₹)</label>
+                  <input id="amount" name="amount" type="number" step="0.01" min="0" required />
+                </div>
+                <div class="form-row">
+                  <label for="date">Date</label>
+                  <input id="date" name="date" type="date" required />
+                </div>
+                <button class="btn btn-primary" type="submit">Add Expense</button>
+              </form>
+            </div>
+
+            <div class="right">
+              <div class="card">
+                <div class="card-title">Budget Progress</div>
+                <div class="progress">
+                  <div class="progress-bar" id="progress-bar" style="width:0%"></div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-title">Expense Distribution</div>
+                <div class="chart-container">
+                  <canvas id="pie-chart"></canvas>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-title">By Category</div>
+                <ul id="category-list" class="list"></ul>
+              </div>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="card-title">Expenses</div>
+            <div class="table">
+              <div class="table-header">
+                <div>Platform</div>
+                <div>Category</div>
+                <div>Amount</div>
+                <div>Date</div>
+                <div></div>
+              </div>
+              <div id="expense-list" class="table-body"></div>
+            </div>
+          </section>
         </div>
-      </section>
+      </div>
+
+      <!-- About Page -->
+      <div id="page-about" class="page">
+        <div class="container">
+          <section class="about-section">
+            <h1>About MoneySaver</h1>
+            <p class="about-intro">MoneySaver is a modern, intuitive expense tracking application designed to help you take control of your finances.</p>
+
+            <div class="about-content">
+              <h2>Our Mission</h2>
+              <p>We believe that understanding your spending habits is the first step toward financial freedom. MoneySaver makes it easy to track expenses, set budgets, and visualize your financial data.</p>
+
+              <h2>Features</h2>
+              <ul class="about-features">
+                <li>📝 Easy expense entry with automatic platform detection</li>
+                <li>💵 Flexible monthly budget limits</li>
+                <li>📊 Real-time spending analytics and category breakdowns</li>
+                <li>🎯 Smart categorization based on platform names</li>
+                <li>📈 Visual progress tracking with progress bars</li>
+                <li>🗄️ Secure data storage with MySQL backend</li>
+              </ul>
+
+              <h2>How It Works</h2>
+              <ol class="about-steps">
+                <li>Set your monthly spending limit</li>
+                <li>Add expenses as you make purchases</li>
+                <li>Track your progress and remaining budget</li>
+                <li>Review spending patterns by category</li>
+              </ol>
+
+              <h2>Technology</h2>
+              <p>Built with modern web technologies including HTML5, CSS3, JavaScript, Node.js, Express, and MySQL for reliable data persistence.</p>
+            </div>
+          </section>
+        </div>
+      </div>
     </main>
 
-    <link rel="stylesheet" href="./styles.css" />
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>💰 MoneySaver</h3>
+            <p>Smart Personal Expense Manager</p>
+          </div>
+          <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#/">Home</a></li>
+              <li><a href="#/dashboard">Dashboard</a></li>
+              <li><a href="#/about">About</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Features</h4>
+            <ul>
+              <li>Expense Tracking</li>
+              <li>Budget Management</li>
+              <li>Category Analytics</li>
+              <li>Real-time Insights</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 MoneySaver. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="./router.js" defer></script>
     <script src="./app.js" defer></script>
   </body>
 </html>
